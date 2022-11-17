@@ -1,0 +1,62 @@
+Scrum: 
+	Trello
+	Jira
+	GitHub
+	Planner
+	
+	Tareas[Sprint{task->n, responsable(s)}:(Objetivo y tiempo)]
+	
+	Sprint 1: Requerimientos
+		1. Definir el proyecto{todos}
+		2. Documentar el proyecto {}
+			Objetivos {Pedro}
+			Planteamiento {Sofia}
+			Requerimientos {Laura, Diana}
+		3. Subir evidencias al repositorio {Pepito}
+		4. Subir evidencia al moddle {todos}
+		4. Realizar acta.
+		
+	
+Repositorio
+	GitHub
+	Bitbucket
+	GitLab
+	TortoiseGit
+
+jesus.bonilla2@o365.unab.edu.co
+
+
+==========================================
+Java: jdk 8-11-17 (LTS) | 18 - 19
+Spring Boot[Netbens-Visual Code-"OK: Spring Boot Tools Eclipse"]  =>(jdk 11) 
+
+Xampp[Mysql] -> SMBD (workbench)
+
+Mongo {5.013}
+
+
+Front-End
+node{npm}
+Visual Studio
+
+Postman
+
+
+===============================================================
+Única vez
+	git config --global user.name "John Doe"
+	git config --global user.email johndoe@example.com
+	
+Solo para clonar el proyecto(solo la primera vez)
+	git clone https://github.com/Universidad-UNAB/Ciclo4G04.git
+	
+Siempre realizar sobre la raíz del repositorio
+	1. git pull #Obtener cambios del repositorio
+	2. git add -A #Identificar los cambios o diferencias entre el repositorio local y el server
+	3. git commit -m "mensaje" #mensaje es la infomación que orienta que cambio se realizó
+	4. git push
+	5. git pull #Repetir paso 1
+
+	
+
+
