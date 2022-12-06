@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.unab.g04sql.Entity.Users;
 
-public interface IUserService {
+public interface IUsersService {
 	
 	public List<Users> all();
     
