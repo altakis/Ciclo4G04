@@ -4,8 +4,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import lombok.Data;
 
 @Document("Cities")
+@Data
 public class Cities {
 
 	@Id
@@ -21,45 +23,5 @@ public class Cities {
     private Boolean estado;
 	
 	@DBRef
-	private Departments departmentId;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
-	public Departments getDepartmentId() {
-		return departmentId;
-	}
-
-	public void setDepartmentId(Departments departmentId) {
-		this.departmentId = departmentId;
-	}	 
+	private Departments departmentId;	 
 }
