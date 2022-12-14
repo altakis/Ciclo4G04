@@ -15,6 +15,11 @@
     <!-- ajax -->
     <script src="../../asset/library/node_modules/jquery/dist/jquery.js"></script>
 
+    <!-- sweetalert2 -->
+    <script src='../../asset/library/node_modules/sweetalert2/dist/sweetalert2.all.js'></script>
+
+    <!-- Script para Departamentos -->
+    <script src='../../js/global.js'></script>
     <script src='../../js/parameter/DepartmentView.js'></script>
 </head>
 
@@ -27,6 +32,7 @@
                 </div>
                 <!-- Datos de entarada del formulario -->
                 <div class="form-group">
+                    <input type="hidden" id="id">
 
                     <label class="form-label mt-1">Código</label>
                     <input type="text" class="form-control" id="codigo" placeholder="Ingresar código">
@@ -36,7 +42,7 @@
 
                     <label class="form-label mt-1">Estado</label>
                     <select class="form-select" id="estado">
-                        <option>--Seleccionar--</option>
+                        <option disabled selected='true' >-- Seleccione --</option>
                         <option value="1">Activo</option>
                         <option value="0">Inactivo</option>
                     </select>
@@ -45,9 +51,9 @@
                 <!-- Botones -->
                 <div>
                     <br>
-                    <button type="button" class="btn btn-outline-success">Agregar</button>
+                    <button type="button" class="btn btn-outline-success" onclick="addData()">Agregar</button>
                     &nbsp;
-                    <button type="button" class="btn btn-outline-warning">Modificar</button>
+                    <button type="button" class="btn btn-outline-warning" onclick="updateData()">Modificar</button>
                 </div>
             </fieldset>
         </form>

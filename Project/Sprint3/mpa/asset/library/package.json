@@ -3,6 +3,7 @@
     "ajax": "^0.0.4",
     "bootstrap-icons": "^1.10.2",
     "bootswatch": "^5.2.3",
-    "jquery": "^3.6.1"
+    "jquery": "^3.6.1",
+    "sweetalert2": "^11.6.15"
   }
 }
