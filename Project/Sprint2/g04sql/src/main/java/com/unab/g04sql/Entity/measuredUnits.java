@@ -9,9 +9,9 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "measured_units")
 @Data
-public class Roles {
+public class measuredUnits {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,11 @@ public class Roles {
     @Column(name = "codigo", nullable = false, unique = true, length = 20)
     private String codigo;
 
-    @Column(name = "nombre", nullable = false, unique = true, length = 50)
+    @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
+
+    @Column(name = "descripcion", nullable = false, length = 50)
+    private String descripcion;
 
     @Column(name = "estado", nullable = false)
     private Boolean estado;

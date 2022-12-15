@@ -15,13 +15,13 @@ import lombok.Data;
 public class RolesPermissions {
 
     @EmbeddedId
-    private RolesPermissionsKey id;    
+    private RolesPermissionsKey id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @MapsId("rolId")
     @JoinColumn(name = "rol_id", nullable = false)
     private Roles rolId;
-    
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @MapsId("permissionId")
     @JoinColumn(name = "permiso_id", nullable = false)

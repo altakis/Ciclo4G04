@@ -12,16 +12,17 @@ import lombok.Data;
 @Table(name = "permissions")
 @Data
 public class Permissions {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @Column(name = "codigo", nullable = false, unique = true, length = 20)
     private String codigo;
 
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
-    
+
     @Column(name = "ruta", nullable = false, length = 100)
     private String ruta;
 
