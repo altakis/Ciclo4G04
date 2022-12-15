@@ -10,18 +10,18 @@ import lombok.Data;
 @Data
 public class Cities {
 
-	@Id
+    @Id
     private String id;
 
-	@Field("codigo")
+    @Field("codigo")
     private String codigo;
-	
-	@Field("nombre")
+
+    @Field("nombre")
     private String nombre;
-	
-	@Field("estado")
+
+    @Field("estado")
     private Boolean estado;
-	
-	@DBRef
-	private Departments departmentId;	 
+
+    @DBRef
+    private Departments departmentId;
 }

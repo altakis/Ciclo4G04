@@ -9,47 +9,16 @@ import lombok.Data;
 @Data
 public class Users {
 
-	@Id   
+    @Id
     private String id;
 
-	@Field("usuario")
+    @Field("usuario")
     private String usuario;
-	
-	@Field("contrasenia")
+
+    @Field("contrasenia")
     private String contrasenia;
-	
-	@Field("estado")
+
+    @Field("estado")
     private Boolean estado;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getContrasenia() {
-		return contrasenia;
-	}
-
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}	
 }
