@@ -6,12 +6,12 @@ import java.util.Optional;
 import com.unab.g04sql.Entity.Cities;
 
 public interface ICitiesService {
-	
-	public List<Cities> all();
-    
-	public Optional<Cities> findById(Integer id);
-	    
-	public Cities save(Cities cities);
-	    
-	public void delete(Integer id);
+
+    public List<Cities> all();
+
+    public Optional<Cities> findById(Integer id);
+
+    public Cities save(Cities cities);
+
+    public void delete(Integer id);
 }

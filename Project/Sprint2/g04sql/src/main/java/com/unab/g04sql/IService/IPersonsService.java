@@ -6,12 +6,12 @@ import java.util.Optional;
 import com.unab.g04sql.Entity.Persons;
 
 public interface IPersonsService {
-	
-	public List<Persons> all();
-    
-	public Optional<Persons> findById(Integer id);
-	    
-	public Persons save(Persons persons);
-	    
-	public void delete(Integer id);
+
+    public List<Persons> all();
+
+    public Optional<Persons> findById(Integer id);
+
+    public Persons save(Persons persons);
+
+    public void delete(Integer id);
 }

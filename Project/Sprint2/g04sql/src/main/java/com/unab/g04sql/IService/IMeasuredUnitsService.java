@@ -6,12 +6,12 @@ import java.util.Optional;
 import com.unab.g04sql.Entity.MeasuredUnits;
 
 public interface IMeasuredUnitsService {
-	
-	public List<MeasuredUnits> all();
-    
-	public Optional<MeasuredUnits> findById(Integer id);
-	    
-	public MeasuredUnits save(MeasuredUnits measuredUnits);
-	    
-	public void delete(Integer id);
+
+    public List<MeasuredUnits> all();
+
+    public Optional<MeasuredUnits> findById(Integer id);
+
+    public MeasuredUnits save(MeasuredUnits measuredUnits);
+
+    public void delete(Integer id);
 }
