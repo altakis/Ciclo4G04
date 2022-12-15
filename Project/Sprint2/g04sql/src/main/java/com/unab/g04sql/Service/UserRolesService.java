@@ -1,4 +1,5 @@
 package com.unab.g04sql.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,31 +10,30 @@ import com.unab.g04sql.Entity.UserRoles;
 import com.unab.g04sql.IRepository.IUserRolesRepository;
 import com.unab.g04sql.IService.IUserRolesService;
 
-
 @Service
-public class UserRolesService implements IUserRolesService{
-	
-	@Autowired
-	private IUserRolesRepository repository; 
-	
-	@Override
-	public List<UserRoles> all() {
-		return repository.findAll();
-	}
+public class UserRolesService implements IUserRolesService {
 
-	@Override
-	public List<UserRoles> findById(Integer userId) {		
-		return repository.findAllByUserId(userId);
-	}
+    @Autowired
+    private IUserRolesRepository repository;
 
-	@Override
-	public UserRoles save(UserRoles userRoles) {		
-		return repository.save(userRoles);
-	}
+    @Override
+    public List<UserRoles> all() {
+        return repository.findAll();
+    }
 
-	@Override
-	public void delete(Integer id) {
-		repository.deleteById(id);		
-	}
+    @Override
+    public List<UserRoles> findById(Integer userId) {
+        return repository.findAllByUserId(userId);
+    }
+
+    @Override
+    public UserRoles save(UserRoles userRoles) {
+        return repository.save(userRoles);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 
 }

@@ -1,4 +1,5 @@
 package com.unab.g04sql.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,31 +10,30 @@ import com.unab.g04sql.Entity.Persons;
 import com.unab.g04sql.IRepository.IPersonsRepository;
 import com.unab.g04sql.IService.IPersonsService;
 
-
 @Service
-public class PersonsService implements IPersonsService{
-	
-	@Autowired
-	private IPersonsRepository repository; 
-	
-	@Override
-	public List<Persons> all() {
-		return repository.findAll();
-	}
+public class PersonsService implements IPersonsService {
 
-	@Override
-	public Optional<Persons> findById(Integer id) {		
-		return repository.findById(id);
-	}
+    @Autowired
+    private IPersonsRepository repository;
 
-	@Override
-	public Persons save(Persons persons) {		
-		return repository.save(persons);
-	}
+    @Override
+    public List<Persons> all() {
+        return repository.findAll();
+    }
 
-	@Override
-	public void delete(Integer id) {
-		repository.deleteById(id);		
-	}
+    @Override
+    public Optional<Persons> findById(Integer id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public Persons save(Persons persons) {
+        return repository.save(persons);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 
 }

@@ -1,4 +1,5 @@
 package com.unab.g04sql.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,31 +10,30 @@ import com.unab.g04sql.Entity.RolesPermissions;
 import com.unab.g04sql.IRepository.IRolesPermissionsRepository;
 import com.unab.g04sql.IService.IRolesPermissionsService;
 
-
 @Service
-public class RolesPermissionsService implements IRolesPermissionsService{
-	
-	@Autowired
-	private IRolesPermissionsRepository repository; 
-	
-	@Override
-	public List<RolesPermissions> all() {
-		return repository.findAll();
-	}
+public class RolesPermissionsService implements IRolesPermissionsService {
 
-	@Override
-	public List<RolesPermissions> findById(Integer rolId) {		
-		return repository.findAllByRolId(rolId);
-	}
+    @Autowired
+    private IRolesPermissionsRepository repository;
 
-	@Override
-	public RolesPermissions save(RolesPermissions rolesPermissions) {		
-		return repository.save(rolesPermissions);
-	}
+    @Override
+    public List<RolesPermissions> all() {
+        return repository.findAll();
+    }
 
-	@Override
-	public void delete(Integer id) {
-		repository.deleteById(id);		
-	}
+    @Override
+    public List<RolesPermissions> findById(Integer rolId) {
+        return repository.findAllByRolId(rolId);
+    }
+
+    @Override
+    public RolesPermissions save(RolesPermissions rolesPermissions) {
+        return repository.save(rolesPermissions);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 
 }
