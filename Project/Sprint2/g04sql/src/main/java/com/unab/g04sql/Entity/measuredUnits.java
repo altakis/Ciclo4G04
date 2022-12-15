@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name = "measured_units")
 @Data
-public class measuredUnits {
+public class MeasuredUnits {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
