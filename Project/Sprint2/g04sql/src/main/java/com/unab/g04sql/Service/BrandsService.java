@@ -1,4 +1,5 @@
 package com.unab.g04sql.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,31 +10,30 @@ import com.unab.g04sql.Entity.Brands;
 import com.unab.g04sql.IRepository.IBrandsRepository;
 import com.unab.g04sql.IService.IBrandsService;
 
-
 @Service
-public class BrandsService implements IBrandsService{
-	
-	@Autowired
-	private IBrandsRepository repository; 
-	
-	@Override
-	public List<Brands> all() {
-		return repository.findAll();
-	}
+public class BrandsService implements IBrandsService {
 
-	@Override
-	public Optional<Brands> findById(Integer id) {		
-		return repository.findById(id);
-	}
+    @Autowired
+    private IBrandsRepository repository;
 
-	@Override
-	public Brands save(Brands brands) {		
-		return repository.save(brands);
-	}
+    @Override
+    public List<Brands> all() {
+        return repository.findAll();
+    }
 
-	@Override
-	public void delete(Integer id) {
-		repository.deleteById(id);		
-	}
+    @Override
+    public Optional<Brands> findById(Integer id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public Brands save(Brands brands) {
+        return repository.save(brands);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 
 }

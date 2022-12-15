@@ -22,8 +22,8 @@ public class RolesPermissionsService implements IRolesPermissionsService{
 	}
 
 	@Override
-	public Optional<RolesPermissions> findById(Integer id) {		
-		return repository.findById(id);
+	public List<RolesPermissions> findById(Integer rolId) {		
+		return repository.findAllByRolId(rolId);
 	}
 
 	@Override

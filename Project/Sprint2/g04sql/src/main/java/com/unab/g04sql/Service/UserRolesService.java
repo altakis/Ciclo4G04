@@ -22,8 +22,8 @@ public class UserRolesService implements IUserRolesService{
 	}
 
 	@Override
-	public Optional<UserRoles> findById(Integer id) {		
-		return repository.findById(id);
+	public List<UserRoles> findById(Integer userId) {		
+		return repository.findAllByUserId(userId);
 	}
 
 	@Override
