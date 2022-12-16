@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sistema de Información Ciclo 4</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+    <!-- bootswatch -->
+    <link rel="stylesheet" href="../asset/library/node_modules/bootswatch/dist/simplex/bootstrap.css">
+
+    <!-- bootstrap -->
+    <script src="../asset/library/node_modules/jquery/dist/jquery.js"></script>
+    <script src="../asset/library/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Css local -->
+    <link rel='stylesheet' type='text/css' media='screen' href=''>
+
+    <!-- js local -->
+    <script src='../js/login.js'></script>
+</head>
+
+<body onload="LoadData();">
+    <div class="container">
+        <!-- encabezado -->
+        <div class="emcabezado">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Carrito de Compras</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                        aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>                    
+                    
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav me-auto">
+    
+                            <!-- Parámetros -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                    aria-haspopup="true" aria-expanded="false">Parámetros</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="parameter/DepartmentView.html" target="campoTrabajo">Departamentos</a>
+                                    <a class="dropdown-item" href="parameter/CityView.html" target="campoTrabajo">Ciudades</a>                                
+                                </div>
+                            </li>
+    
+                            <!-- <div class="dropdown-divider"></div> -->
+                            <!-- Seguridad -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                    aria-haspopup="true" aria-expanded="false">Parámetros</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="security/UserView.html" target="campoTrabajo">Usuarios</a>
+                                    <a class="dropdown-item" href="security/PersonView.html" target="campoTrabajo">Personas</a>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-sm-2" type="search" placeholder="Search">
+                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                            &nbsp;
+                            <button type="button" class="btn btn-primary" onclick="CerrarSesion();">Salir</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="cuerpo">
+            <!-- <img src="../asset/img/dashboard.png">-->
+            <iframe class="campoTrabajo" id="campoTrabajo" name="campoTrabajo" height="900" width="100%">                
+            </iframe>
+        </div>
+    </div>
+</body>
+
+</html>
