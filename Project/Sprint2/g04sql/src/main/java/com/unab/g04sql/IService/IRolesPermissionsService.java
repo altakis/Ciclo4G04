@@ -1,5 +1,7 @@
 package com.unab.g04sql.IService;
 
+import com.unab.g04sql.Entity.Permissions;
+import com.unab.g04sql.Entity.Roles;
 import java.util.List;
 
 import com.unab.g04sql.Entity.RolesPermissions;
@@ -11,9 +13,9 @@ public interface IRolesPermissionsService {
 
     public Optional<RolesPermissions> findById(Integer roleId);
 
-    public List<RolesPermissions> findAllByRolId(Integer roleId);
+    public List<RolesPermissions> findAllByRolId(Roles roleId);
 
     public RolesPermissions save(RolesPermissions rolesPermissions);
 
-    public void delete(Integer id);
+    public void delete(Roles rolId, Permissions permissionId);
 }
