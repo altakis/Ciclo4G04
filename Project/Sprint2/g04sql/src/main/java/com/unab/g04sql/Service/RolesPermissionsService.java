@@ -22,8 +22,13 @@ public class RolesPermissionsService implements IRolesPermissionsService {
     }
 
     @Override
-    public List<RolesPermissions> findById(Integer rolId) {
-        return repository.findAllByRolId(rolId);
+    public Optional<RolesPermissions> findById(Integer rolId) {
+        return repository.findById(rolId);
+    }
+    
+    @Override
+    public List<RolesPermissions> findAllByRolId(Integer roleId) {
+        return repository.findAllByRolId(roleId);
     }
 
     @Override
@@ -34,6 +39,6 @@ public class RolesPermissionsService implements IRolesPermissionsService {
     @Override
     public void delete(Integer id) {
         repository.deleteById(id);
-    }
+    }   
 
 }
