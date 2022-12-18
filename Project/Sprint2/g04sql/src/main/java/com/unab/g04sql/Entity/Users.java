@@ -20,7 +20,7 @@ public class Users {
     @Column(name = "usuario", nullable = false, unique = true, length = 30)
     private String usuario;
 
-    @Column(name = "contrasenia", nullable = false, unique = true, length = 100)
+    @Column(name = "contrasenia", nullable = false, length = 100)
     private String contrasenia;
 
     @Column(name = "estado", nullable = false)
