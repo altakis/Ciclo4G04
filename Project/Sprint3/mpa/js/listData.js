@@ -1,6 +1,6 @@
 function findAllDepartamentos() {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/departments',
+        url: 'http://132.145.204.101:8080/api/departments',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -16,7 +16,7 @@ function findAllDepartamentos() {
 
 function findAllCiudades() {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/cities',
+        url: 'http://132.145.204.101:8080/api/cities',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -32,7 +32,7 @@ function findAllCiudades() {
 
 function findAllUsuarios() {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/users',
+        url: 'http://132.145.204.101:8080/api/users',
         method: "GET",
         headers: {
             "Content-Type": "application/json"

@@ -2,7 +2,7 @@
 
 function findAll() {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/departments',
+        url: 'http://132.145.204.101:8080/api/departments',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -27,7 +27,7 @@ function findAll() {
 // Consultar registro por ID
 function findById(id) {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/departments/' + id,
+        url: 'http://132.145.204.101:8080/api/departments/' + id,
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -50,7 +50,7 @@ function findById(id) {
 function deleteById(id) {
     bandera = true;
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/cities',
+        url: 'http://132.145.204.101:8080/api/cities',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -62,10 +62,10 @@ function deleteById(id) {
             }
         })
         if (bandera == false) {
-            mensajeEliminar('http://132.145.204.101:8180/api/departments/' + id, false);
+            mensajeEliminar('http://132.145.204.101:8080/api/departments/' + id, false);
             return true;
         } else {
-            mensajeEliminar('http://132.145.204.101:8180/api/departments/' + id, true);
+            mensajeEliminar('http://132.145.204.101:8080/api/departments/' + id, true);
             return true;
         }
     })
@@ -75,7 +75,7 @@ function deleteById(id) {
 //Accion de adicionar un registro
 function addData() {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/departments',
+        url: 'http://132.145.204.101:8080/api/departments',
         data: JSON.stringify({
             codigo: $("#codigo").val(),
             nombre: $("#nombre").val(),
@@ -94,7 +94,7 @@ function addData() {
 
 //Accion de actualizar un registro
 function updateData() {
-    rutaApi = 'http://132.145.204.101:8180/api/departments/' + $('#id').val();
+    rutaApi = 'http://132.145.204.101:8080/api/departments/' + $('#id').val();
     dataJson = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
