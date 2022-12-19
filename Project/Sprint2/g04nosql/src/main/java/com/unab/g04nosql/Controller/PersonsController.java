@@ -24,55 +24,55 @@ import com.unab.g04nosql.IService.IPersonsService;
 @RequestMapping("api/persons")
 public class PersonsController {
 
-	@Autowired
-	private IPersonsService service;
-	
-	@GetMapping
-	public List<Persons> all() {
-		return service.all();
-	}
-	
-	@GetMapping("{id}")
-	public Optional<Persons> show(@PathVariable String id) {
-		return service.findById(id);
-	}
-	
-	@PostMapping
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Persons save(@RequestBody Persons person) {
-		return service.save(person);
-	}
-	
-	@PutMapping("{id}")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Persons update(@PathVariable String id, @RequestBody Persons persons) {
-		Optional<Persons> op = service.findById(id);
-		
-		if (!op.isEmpty()) {
-			Persons personsUpdate = op.get();
-			personsUpdate.setTipoDocumento(persons.getTipoDocumento());
-			personsUpdate.setDocumento(persons.getDocumento());
-			personsUpdate.setPrimerNombre(persons.getPrimerNombre());
-			personsUpdate.setSegundoNombre(persons.getSegundoNombre());
-			personsUpdate.setPrimerApellido(persons.getPrimerApellido());
-			personsUpdate.setSegundoApellido(persons.getSegundoApellido());
-			personsUpdate.setCorreo(persons.getCorreo());
-			personsUpdate.setTelefono(persons.getTelefono());
-			personsUpdate.setFechaNacimiento(persons.getFechaNacimiento());
-			personsUpdate.setDireccion(persons.getDireccion());
-			personsUpdate.setUsuarioId(persons.getUsuarioId());
-			personsUpdate.setCiudadId(persons.getCiudadId());
-			personsUpdate.setEstado(persons.getEstado());
-			return service.save(personsUpdate);
-		}
-		
-		return persons;
-	}
-	
-	@DeleteMapping("{id}")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable String id) {
-		service.delete(id);
-	}
-	
+    @Autowired
+    private IPersonsService service;
+
+    @GetMapping
+    public List<Persons> all() {
+        return service.all();
+    }
+
+    @GetMapping("{id}")
+    public Optional<Persons> show(@PathVariable String id) {
+        return service.findById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Persons save(@RequestBody Persons person) {
+        return service.save(person);
+    }
+
+    @PutMapping("{id}")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Persons update(@PathVariable String id, @RequestBody Persons persons) {
+        Optional<Persons> op = service.findById(id);
+
+        if (!op.isEmpty()) {
+            Persons personsUpdate = op.get();
+            personsUpdate.setTipoDocumento(persons.getTipoDocumento());
+            personsUpdate.setDocumento(persons.getDocumento());
+            personsUpdate.setPrimerNombre(persons.getPrimerNombre());
+            personsUpdate.setSegundoNombre(persons.getSegundoNombre());
+            personsUpdate.setPrimerApellido(persons.getPrimerApellido());
+            personsUpdate.setSegundoApellido(persons.getSegundoApellido());
+            personsUpdate.setCorreo(persons.getCorreo());
+            personsUpdate.setTelefono(persons.getTelefono());
+            personsUpdate.setFechaNacimiento(persons.getFechaNacimiento());
+            personsUpdate.setDireccion(persons.getDireccion());
+            personsUpdate.setUsuarioId(persons.getUsuarioId());
+            personsUpdate.setCiudadId(persons.getCiudadId());
+            personsUpdate.setEstado(persons.getEstado());
+            return service.save(personsUpdate);
+        }
+
+        return persons;
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable String id) {
+        service.delete(id);
+    }
+
 }

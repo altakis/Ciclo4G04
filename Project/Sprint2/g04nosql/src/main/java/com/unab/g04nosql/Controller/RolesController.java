@@ -16,53 +16,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04nosql.Collection.Cities;
-import com.unab.g04nosql.IService.ICitiesService;
+import com.unab.g04nosql.Collection.Roles;
+import com.unab.g04nosql.IService.IRolesService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/cities")
-public class CitiesController {
+@RequestMapping("api/roles")
+public class RolesController {
 
     @Autowired
-    private ICitiesService service;
+    private IRolesService service;
 
     @GetMapping
-    public List<Cities> all() {
+    public List<Roles> all() {
         return service.all();
     }
 
     @GetMapping("{id}")
-    public Optional<Cities> show(@PathVariable String id) {
+    public Optional<Roles> show(@PathVariable Integer id) {
         return service.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Cities save(@RequestBody Cities person) {
+    public Roles save(@RequestBody Roles person) {
         return service.save(person);
     }
 
     @PutMapping("{id}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Cities update(@PathVariable String id, @RequestBody Cities cities) {
-        Optional<Cities> op = service.findById(id);
+    public Roles update(@PathVariable Integer id, @RequestBody Roles roles) {
+        Optional<Roles> op = service.findById(id);
 
         if (!op.isEmpty()) {
-            Cities citiesUpdate = op.get();
-            citiesUpdate.setCodigo(cities.getCodigo());
-            citiesUpdate.setNombre(cities.getNombre());
-            citiesUpdate.setDepartmentId(cities.getDepartmentId());
-            citiesUpdate.setEstado(cities.getEstado());
-            return service.save(citiesUpdate);
+            Roles rolesUpdate = op.get();
+            rolesUpdate.setCodigo(roles.getCodigo());
+            rolesUpdate.setNombre(roles.getNombre());            
+            rolesUpdate.setEstado(roles.getEstado());
+            return service.save(rolesUpdate);
         }
 
-        return cities;
+        return roles;
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String id) {
+    public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
 
