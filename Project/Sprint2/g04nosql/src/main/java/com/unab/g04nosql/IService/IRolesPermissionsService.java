@@ -1,6 +1,5 @@
 package com.unab.g04nosql.IService;
 
-import com.unab.g04nosql.Collection.Permissions;
 import com.unab.g04nosql.Collection.Roles;
 import java.util.List;
 
@@ -17,5 +16,5 @@ public interface IRolesPermissionsService {
 
     public RolesPermissions save(RolesPermissions rolesPermissions);
 
-    public void delete(Roles rolId, Permissions permissionId);
+    public void delete(Integer rolePermissionId);
 }

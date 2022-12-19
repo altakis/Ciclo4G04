@@ -1,6 +1,5 @@
 package com.unab.g04nosql.IService;
 
-import com.unab.g04nosql.Collection.Roles;
 import java.util.List;
 
 import com.unab.g04nosql.Collection.UserRoles;
@@ -17,5 +16,5 @@ public interface IUserRolesService {
 
     public UserRoles save(UserRoles userRoles);
 
-    public void delete(Users userId, Roles rolId);
+    public void delete(Integer userRolesId);
 }
