@@ -33,7 +33,7 @@ public class PermissionsController {
     }
 
     @GetMapping("{id}")
-    public Optional<Permissions> show(@PathVariable Integer id) {
+    public Optional<Permissions> show(@PathVariable String id) {
         return service.findById(id);
     }
 
@@ -45,7 +45,7 @@ public class PermissionsController {
 
     @PutMapping("{id}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Permissions update(@PathVariable Integer id, @RequestBody Permissions permissions) {
+    public Permissions update(@PathVariable String id, @RequestBody Permissions permissions) {
         Optional<Permissions> op = service.findById(id);
 
         if (!op.isEmpty()) {
@@ -62,7 +62,7 @@ public class PermissionsController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable String id) {
         service.delete(id);
     }
 

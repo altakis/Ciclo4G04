@@ -9,9 +9,9 @@ public interface IProductsService {
 
     public List<Products> all();
 
-    public Optional<Products> findById(Integer id);
+    public Optional<Products> findById(String id);
 
     public Products save(Products products);
 
-    public void delete(Integer id);
+    public void delete(String id);
 }

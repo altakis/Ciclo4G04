@@ -9,9 +9,9 @@ public interface IPermissionsService {
 
     public List<Permissions> all();
 
-    public Optional<Permissions> findById(Integer id);
+    public Optional<Permissions> findById(String id);
 
     public Permissions save(Permissions permissions);
 
-    public void delete(Integer id);
+    public void delete(String id);
 }

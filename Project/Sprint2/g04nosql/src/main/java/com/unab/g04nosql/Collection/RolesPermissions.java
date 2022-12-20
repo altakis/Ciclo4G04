@@ -10,7 +10,7 @@ import lombok.Data;
 public class RolesPermissions {
 
     @Id
-    private Integer id;
+    private String id;
 
     @DBRef
     private Roles rolId;

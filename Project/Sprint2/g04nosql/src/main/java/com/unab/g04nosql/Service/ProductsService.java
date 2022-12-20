@@ -22,7 +22,7 @@ public class ProductsService implements IProductsService {
     }
 
     @Override
-    public Optional<Products> findById(Integer id) {
+    public Optional<Products> findById(String id) {
         return repository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class ProductsService implements IProductsService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 

@@ -22,7 +22,7 @@ public class MeasuredUnitsService implements IMeasuredUnitsService {
     }
 
     @Override
-    public Optional<MeasuredUnits> findById(Integer id) {
+    public Optional<MeasuredUnits> findById(String id) {
         return repository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class MeasuredUnitsService implements IMeasuredUnitsService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 

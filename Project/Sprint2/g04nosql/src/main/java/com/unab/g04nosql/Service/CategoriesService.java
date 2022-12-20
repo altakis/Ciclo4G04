@@ -22,7 +22,7 @@ public class CategoriesService implements ICategoriesService {
     }
 
     @Override
-    public Optional<Categories> findById(Integer id) {
+    public Optional<Categories> findById(String id) {
         return repository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class CategoriesService implements ICategoriesService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 

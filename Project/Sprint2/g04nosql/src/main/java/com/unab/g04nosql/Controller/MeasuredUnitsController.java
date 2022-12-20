@@ -33,7 +33,7 @@ public class MeasuredUnitsController {
     }
 
     @GetMapping("{id}")
-    public Optional<MeasuredUnits> show(@PathVariable Integer id) {
+    public Optional<MeasuredUnits> show(@PathVariable String id) {
         return service.findById(id);
     }
 
@@ -45,7 +45,7 @@ public class MeasuredUnitsController {
 
     @PutMapping("{id}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public MeasuredUnits update(@PathVariable Integer id, @RequestBody MeasuredUnits measuredUnits) {
+    public MeasuredUnits update(@PathVariable String id, @RequestBody MeasuredUnits measuredUnits) {
         Optional<MeasuredUnits> op = service.findById(id);
 
         if (!op.isEmpty()) {
@@ -62,7 +62,7 @@ public class MeasuredUnitsController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable String id) {
         service.delete(id);
     }
 

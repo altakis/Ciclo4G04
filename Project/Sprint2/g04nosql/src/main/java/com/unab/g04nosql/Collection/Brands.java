@@ -10,7 +10,7 @@ import lombok.Data;
 public class Brands {
 
     @Id
-    private Integer id;
+    private String id;
 
     @Field("codigo")
     private String codigo;

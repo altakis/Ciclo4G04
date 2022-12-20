@@ -33,7 +33,7 @@ public class CategoriesController {
     }
 
     @GetMapping("{id}")
-    public Optional<Categories> show(@PathVariable Integer id) {
+    public Optional<Categories> show(@PathVariable String id) {
         return service.findById(id);
     }
 
@@ -45,7 +45,7 @@ public class CategoriesController {
 
     @PutMapping("{id}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Categories update(@PathVariable Integer id, @RequestBody Categories categories) {
+    public Categories update(@PathVariable String id, @RequestBody Categories categories) {
         Optional<Categories> op = service.findById(id);
 
         if (!op.isEmpty()) {
@@ -61,7 +61,7 @@ public class CategoriesController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable String id) {
         service.delete(id);
     }
 

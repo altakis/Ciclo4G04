@@ -33,7 +33,7 @@ public class BrandsController {
     }
 
     @GetMapping("{id}")
-    public Optional<Brands> show(@PathVariable Integer id) {
+    public Optional<Brands> show(@PathVariable String id) {
         return service.findById(id);
     }
 
@@ -45,7 +45,7 @@ public class BrandsController {
 
     @PutMapping("{id}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Brands update(@PathVariable Integer id, @RequestBody Brands brands) {
+    public Brands update(@PathVariable String id, @RequestBody Brands brands) {
         Optional<Brands> op = service.findById(id);
 
         if (!op.isEmpty()) {
@@ -61,7 +61,7 @@ public class BrandsController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable String id) {
         service.delete(id);
     }
 

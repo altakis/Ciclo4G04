@@ -10,11 +10,11 @@ public interface IRolesPermissionsService {
 
     public List<RolesPermissions> all();
 
-    public Optional<RolesPermissions> findById(Integer roleId);
+    public Optional<RolesPermissions> findById(String roleId);
 
     public List<RolesPermissions> findAllByRolId(Roles roleId);
 
     public RolesPermissions save(RolesPermissions rolesPermissions);
 
-    public void delete(Integer rolePermissionId);
+    public void delete(String rolePermissionId);
 }

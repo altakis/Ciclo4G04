@@ -1,9 +1,9 @@
-<template>
+<template>    
     <div class="container">
-        <form id="city">
+        <form id="rol">
             <fieldset>
                 <div class="alert alert-dismissible alert-warning">
-                    <p class="mb-0">Registro de Ciudades</p>
+                    <p class="mb-0">Registro de Roles</p>
                 </div>
                 <!-- Datos de entarada del formulario -->
                 <div class="form-group">
@@ -13,14 +13,7 @@
                     <input type="text" class="form-control" v-model="codigo" placeholder="Ingresar código">
 
                     <label class="form-label mt-1">Nombre</label>
-                    <input type="text" class="form-control" v-model="nombre" placeholder="Ingresar nombre">
-
-                    <label class="form-label mt-1">Departamentos</label>
-                    <select class="form-select" v-model="departmentId">
-                        <option disabled :selected="true" value="">-- Seleccione --</option>
-                        <option v-for="item in listDepartment" :key="item.id" :value="item.id">{{ item.nombre}}
-                        </option>
-                    </select>
+                    <input type="text" class="form-control" v-model="nombre" placeholder="Ingresar nombre">                    
                     
                     <label class="form-label mt-1">Estado</label>
                     <select class="form-select" v-model="estado">
@@ -47,8 +40,7 @@
                 <thead>
                     <tr class="table-active">
                         <td>Codigo</td>
-                        <td>Ciudad</td>
-                        <td>Departamento</td>
+                        <td>Rol</td>                        
                         <td>Estado</td>
                         <td>Editar</td>
                         <td>Eliminar</td>
@@ -57,8 +49,7 @@
                 <tbody id="dataResult">
                     <tr v-for="item in listData" :key="item.id">
                         <td>{{ item.codigo }}</td>
-                        <td>{{ item.nombre }}</td>
-                        <td>{{ item.departmentId.nombre }}</td>
+                        <td>{{ item.nombre }}</td>                        
                         <td>{{ item.estado == true ? 'Activo' : 'Inactivo' }}</td>
                         <td><button @click="findByid(item.id)">➤</button></td>
                         <td><button @click="deleteById(item.id)">➤</button></td>
@@ -72,10 +63,10 @@
 <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import {CITIES_ENDPOINT, DEPARTMENTS_ENDPOINT} from '../../endpoint_config.js';
+import {ROLES_ENDPOINT, ROLES_PERMISSIONS_ENDPOINT, USER_ROLES_ENDPOINT} from '../../endpoint_config.js';
 
 export default {
-    name: 'CityView',
+    name: 'RolView',
 
     data() {
         return {
@@ -84,7 +75,8 @@ export default {
             nombre: '',
             estado: '',
             listData: [],
-            listDepartment:[],
+            listUserRoles:[],
+            listRolPermissions:[],
             listValidar: []
         }
     },
@@ -93,23 +85,25 @@ export default {
     },
     methods: {
         loadData: function () {
-            axios.get(CITIES_ENDPOINT).then(result => {
+            axios.get(ROLES_ENDPOINT).then(result => {
                 this.listData = result.data
             })
-            axios.get(DEPARTMENTS_ENDPOINT).then(result => {
-                this.listDepartment = result.data
+            axios.get(ROLES_PERMISSIONS_ENDPOINT).then(result => {
+                this.listRolPermissions = result.data
             })
-            axios.get(CITIES_ENDPOINT).then(result => {
+            axios.get(USER_ROLES_ENDPOINT).then(result => {
+                this.listUserRoles = result.data
+            })
+            axios.get(ROLES_ENDPOINT).then(result => {
                 this.listValidar = result.data
             })
         },
         findByid: function (id) {
             // metodo para consutlar por el ig del boton impreso en la vista
-            axios.get(CITIES_ENDPOINT + '/' + id).then(result => {
+            axios.get(ROLES_ENDPOINT + '/' + id).then(result => {
                 this.id = result.data.id;
                 this.codigo = result.data.codigo;
-                this.nombre = result.data.nombre;
-                this.departmentId = result.data.departmentId.id;
+                this.nombre = result.data.nombre;                
                 this.estado = (result.data.estado == true ? 1 : 0);
             })
         },
@@ -127,7 +121,7 @@ export default {
                     confirmButtonText: 'Si, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.delete(CITIES_ENDPOINT + '/' + id).then(() => {
+                        axios.delete(ROLES_ENDPOINT + '/' + id).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: "'El registro se eliminó de forma correcta.'",
@@ -149,13 +143,10 @@ export default {
         dataAdd: function () {
             let data = {
                 codigo: this.codigo,
-                nombre: this.nombre,
-                departmentId:{
-                    id:this.departmentId
-                },
+                nombre: this.nombre,                
                 estado: parseInt(this.estado)
             };
-            axios.post(CITIES_ENDPOINT, data).then(result => {
+            axios.post(ROLES_ENDPOINT, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -173,13 +164,10 @@ export default {
             let data = {
                 id: this.id,
                 codigo: this.codigo,
-                nombre: this.nombre,
-                departmentId:{
-                    id:this.departmentId
-                },
+                nombre: this.nombre,                
                 estado: parseInt(this.estado)
             };
-            axios.put(CITIES_ENDPOINT + '/' + this.id, data).then(result => {
+            axios.put(ROLES_ENDPOINT + '/' + this.id, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -197,7 +185,7 @@ export default {
             var bandera = true;
 
             this.listValidar.forEach((item, index) => {
-                if (item.departmentId.id == id) {
+                if (item.rolId == id) {
                     bandera = false
                 }
                 console.log(index)
@@ -215,4 +203,3 @@ export default {
     }
 }
 </script>
-  

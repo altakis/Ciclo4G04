@@ -34,6 +34,26 @@ const routes = [
     path: '/seguridad-persona',
     name: 'registro-persona',
     component: () => import('../views/security/PersonView.vue')
+  },
+  {
+    path: '/acceso-rol',
+    name: 'registro-rol',
+    component: () => import('../views/access/RolView.vue')
+  },
+  {
+    path: '/acceso-permiso',
+    name: 'registro-permiso',
+    component: () => import('../views/access/PermissionView.vue')
+  },
+  {
+    path: '/acceso-rolUser',
+    name: 'registro-rolUser',
+    component: () => import('../views/access/UserRolView.vue')
+  },
+  {
+    path: '/acceso-rolPermiso',
+    name: 'registro-rolPermiso',
+    component: () => import('../views/access/RolPermissionView.vue')
   }
 
 ]

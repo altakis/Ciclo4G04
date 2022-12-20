@@ -22,7 +22,7 @@ public class RolesService implements IRolesService {
     }
 
     @Override
-    public Optional<Roles> findById(Integer id) {
+    public Optional<Roles> findById(String id) {
         return repository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class RolesService implements IRolesService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 

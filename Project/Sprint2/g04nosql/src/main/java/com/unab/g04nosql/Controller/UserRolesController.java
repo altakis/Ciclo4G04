@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.unab.g04nosql.Collection.UserRoles;
 import com.unab.g04nosql.Collection.Users;
-import com.unab.g04nosql.Collection.Roles;
 import java.util.List;
 import java.util.Optional;
 import com.unab.g04nosql.IService.IRolesService;
@@ -64,7 +63,7 @@ public class UserRolesController {
 
     @DeleteMapping("{userRoleId}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("userId") Integer userRoleId) {
+    public void delete(@PathVariable("userId") String userRoleId) {
         Optional<UserRoles> userRoleToDelete = service.findById(userRoleId);
         if (!userRoleToDelete.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

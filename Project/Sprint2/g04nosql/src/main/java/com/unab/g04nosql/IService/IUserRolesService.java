@@ -10,11 +10,11 @@ public interface IUserRolesService {
 
     public List<UserRoles> all();
     
-    public Optional<UserRoles> findById(Integer roleId);
+    public Optional<UserRoles> findById(String roleId);
 
     public List<UserRoles> findAllByUserId(Users userId);
 
     public UserRoles save(UserRoles userRoles);
 
-    public void delete(Integer userRolesId);
+    public void delete(String userRolesId);
 }

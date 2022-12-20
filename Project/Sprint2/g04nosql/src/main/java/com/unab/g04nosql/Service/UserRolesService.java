@@ -23,7 +23,7 @@ public class UserRolesService implements IUserRolesService {
     }    
 
     @Override
-    public Optional<UserRoles> findById(Integer userId) {
+    public Optional<UserRoles> findById(String userId) {
         return repository.findById(userId);
     }
     
@@ -38,7 +38,7 @@ public class UserRolesService implements IUserRolesService {
     }
     
     @Override
-    public void delete(Integer userRoleId) {
+    public void delete(String userRoleId) {
         Optional<UserRoles> userRoleToDelete = repository.findById(userRoleId);
         repository.delete(userRoleToDelete.get());
     }

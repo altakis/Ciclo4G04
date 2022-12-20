@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.unab.g04nosql.Collection.Roles;
 
-public interface IRolesRepository extends MongoRepository<Roles, Integer> {
+public interface IRolesRepository extends MongoRepository<Roles, String> {
 
 }

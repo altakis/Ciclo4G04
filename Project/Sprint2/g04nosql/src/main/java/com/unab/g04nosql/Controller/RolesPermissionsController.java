@@ -37,7 +37,7 @@ public class RolesPermissionsController {
     }
 
     @GetMapping("{rolId}")
-    public List<RolesPermissions> show(@PathVariable("rolId") Integer rolId) {
+    public List<RolesPermissions> show(@PathVariable("rolId") String rolId) {
         Optional<Roles> rolIdToFind = roleService.findById(rolId);
         if (rolIdToFind.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -59,7 +59,7 @@ public class RolesPermissionsController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") Integer rolPermissionId) {
+    public void delete(@PathVariable("id") String rolPermissionId) {
         Optional<RolesPermissions> rolPermissionToDelete = service.findById(rolPermissionId);
         if (!rolPermissionToDelete.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

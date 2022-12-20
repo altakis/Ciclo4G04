@@ -22,7 +22,7 @@ public class BrandsService implements IBrandsService {
     }
 
     @Override
-    public Optional<Brands> findById(Integer id) {
+    public Optional<Brands> findById(String id) {
         return repository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class BrandsService implements IBrandsService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 

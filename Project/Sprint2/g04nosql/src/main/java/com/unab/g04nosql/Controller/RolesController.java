@@ -33,7 +33,7 @@ public class RolesController {
     }
 
     @GetMapping("{id}")
-    public Optional<Roles> show(@PathVariable Integer id) {
+    public Optional<Roles> show(@PathVariable String id) {
         return service.findById(id);
     }
 
@@ -45,7 +45,7 @@ public class RolesController {
 
     @PutMapping("{id}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Roles update(@PathVariable Integer id, @RequestBody Roles roles) {
+    public Roles update(@PathVariable String id, @RequestBody Roles roles) {
         Optional<Roles> op = service.findById(id);
 
         if (!op.isEmpty()) {
@@ -61,7 +61,7 @@ public class RolesController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable String id) {
         service.delete(id);
     }
 

@@ -9,9 +9,9 @@ public interface IRolesService {
 
     public List<Roles> all();
 
-    public Optional<Roles> findById(Integer id);
+    public Optional<Roles> findById(String id);
 
     public Roles save(Roles roles);
 
-    public void delete(Integer id);
+    public void delete(String id);
 }

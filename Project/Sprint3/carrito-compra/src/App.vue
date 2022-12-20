@@ -14,10 +14,10 @@
             <!-- Parámetros -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false">Parámetros</a>
+                aria-expanded="false">Sucursales</a>
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/parametro-departamento">Registro Departamentos</router-link>
-                <router-link class="dropdown-item" to="/parametro-ciudad">Registro Ciudaddes</router-link>
+                <router-link class="dropdown-item" to="/parametro-ciudad">Registro Ciudades</router-link>
               </div>
             </li>
 
@@ -25,10 +25,23 @@
             <!-- Seguridad -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false">Parámetros</a>
+                aria-expanded="false">Personal</a>
               <div class="dropdown-menu">
-                <router-link class="dropdown-item" to="/seguridad-usuario">Registro Usuarios</router-link>
                 <router-link class="dropdown-item" to="/seguridad-persona">Registro Personas</router-link>
+                <router-link class="dropdown-item" to="/seguridad-usuario">Registro Usuarios</router-link>
+              </div>
+            </li>
+
+            <!-- <div class="dropdown-divider"></div> -->
+            <!-- Acceso -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Access</a>
+              <div class="dropdown-menu">
+                <router-link class="dropdown-item" to="/acceso-rol">Registro Rol</router-link>
+                <router-link class="dropdown-item" to="/acceso-permiso">Registro Permisos</router-link>
+                <router-link class="dropdown-item" to="/acceso-rolUser">Registro Rol-Usuario</router-link>
+                <router-link class="dropdown-item" to="/acceso-rolPermiso">Registro Rol-Permisos</router-link>
               </div>
             </li>
           </ul>

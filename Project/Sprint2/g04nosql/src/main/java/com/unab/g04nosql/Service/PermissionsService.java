@@ -22,7 +22,7 @@ public class PermissionsService implements IPermissionsService {
     }
 
     @Override
-    public Optional<Permissions> findById(Integer id) {
+    public Optional<Permissions> findById(String id) {
         return repository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class PermissionsService implements IPermissionsService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 

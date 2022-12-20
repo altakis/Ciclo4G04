@@ -181,7 +181,7 @@ export default {
                 Swal.fire({
                     title: 'Esta usted seguro de eliminar?',
                     text: "No pordrá revertir los cambios!",
-                    icon: 'Advertencia',
+                    icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',

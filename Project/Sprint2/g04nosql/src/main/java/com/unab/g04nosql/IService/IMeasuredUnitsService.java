@@ -9,9 +9,9 @@ public interface IMeasuredUnitsService {
 
     public List<MeasuredUnits> all();
 
-    public Optional<MeasuredUnits> findById(Integer id);
+    public Optional<MeasuredUnits> findById(String id);
 
     public MeasuredUnits save(MeasuredUnits measuredUnits);
 
-    public void delete(Integer id);
+    public void delete(String id);
 }

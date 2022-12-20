@@ -11,7 +11,7 @@ import lombok.Data;
 public class Products {
 
     @Id
-    private Integer id;
+    private String id;
 
     @Field("codigo")
     private String codigo;

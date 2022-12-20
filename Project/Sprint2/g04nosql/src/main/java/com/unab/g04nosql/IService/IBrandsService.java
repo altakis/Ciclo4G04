@@ -9,9 +9,9 @@ public interface IBrandsService {
 
     public List<Brands> all();
 
-    public Optional<Brands> findById(Integer id);
+    public Optional<Brands> findById(String id);
 
     public Brands save(Brands brands);
 
-    public void delete(Integer id);
+    public void delete(String id);
 }

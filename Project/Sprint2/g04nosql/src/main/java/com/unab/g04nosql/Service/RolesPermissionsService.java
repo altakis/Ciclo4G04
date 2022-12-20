@@ -24,7 +24,7 @@ public class RolesPermissionsService implements IRolesPermissionsService {
     }
 
     @Override
-    public Optional<RolesPermissions> findById(Integer rolId) {
+    public Optional<RolesPermissions> findById(String rolId) {
         return repository.findById(rolId);
     }
     
@@ -39,7 +39,7 @@ public class RolesPermissionsService implements IRolesPermissionsService {
     }
 
     @Override
-    public void delete(Integer rolePermissionId) {
+    public void delete(String rolePermissionId) {
         Optional<RolesPermissions> rolePermissionToDelete = repository.findById(rolePermissionId);
         repository.delete(rolePermissionToDelete.get());
     }   

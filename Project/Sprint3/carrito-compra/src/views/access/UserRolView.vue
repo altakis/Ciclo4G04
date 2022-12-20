@@ -1,4 +1,5 @@
 <template>
+    <div>Test # 3</div>
     <div class="container">
         <form id="city">
             <fieldset>
@@ -75,7 +76,7 @@ import Swal from 'sweetalert2';
 import {CITIES_ENDPOINT, DEPARTMENTS_ENDPOINT} from '../../endpoint_config.js';
 
 export default {
-    name: 'CityView',
+    name: 'DepartmentView',
 
     data() {
         return {

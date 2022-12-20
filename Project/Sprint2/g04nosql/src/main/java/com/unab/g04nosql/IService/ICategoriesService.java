@@ -9,9 +9,9 @@ public interface ICategoriesService {
 
     public List<Categories> all();
 
-    public Optional<Categories> findById(Integer id);
+    public Optional<Categories> findById(String id);
 
     public Categories save(Categories categories);
 
-    public void delete(Integer id);
+    public void delete(String id);
 }
