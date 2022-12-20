@@ -2,7 +2,7 @@
 
 function findAll() {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/cities',
+        url: 'http://132.145.204.101:8080/api/cities',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -28,7 +28,7 @@ function findAll() {
 // Consultar registro por ID
 function findById(id) {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/cities/' + id,
+        url: 'http://132.145.204.101:8080/api/cities/' + id,
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -50,13 +50,13 @@ function findById(id) {
 
 // Consultar registro por ID
 function deleteById(id) {
-    mensajeEliminar('http://132.145.204.101:8180/api/cities/' + id);
+    mensajeEliminar('http://132.145.204.101:8080/api/cities/' + id);
 }
 
 //Accion de adicionar un registro
 function addData() {
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/cities',
+        url: 'http://132.145.204.101:8080/api/cities',
         data: JSON.stringify({
             codigo: $("#codigo").val(),
             nombre: $("#nombre").val(),
@@ -78,7 +78,7 @@ function addData() {
 
 //Accion de actualizar un registro
 function updateData() {
-    rutaApi = 'http://132.145.204.101:8180/api/cities/' + $('#id').val();
+    rutaApi = 'http://132.145.204.101:8080/api/cities/' + $('#id').val();
     dataJson = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),

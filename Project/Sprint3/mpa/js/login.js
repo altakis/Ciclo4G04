@@ -1,7 +1,7 @@
 function Auth(){
 
     $.ajax({
-        url: 'http://132.145.204.101:8180/api/users',
+        url: 'http://132.145.204.101:8080/api/users',
         method: "GET",
         headers: {
             "Content-Type": "application/json"

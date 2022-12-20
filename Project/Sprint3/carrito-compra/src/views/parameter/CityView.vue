@@ -21,9 +21,7 @@
                         <option v-for="item in listDepartment" :key="item.id" :value="item.id">{{ item.nombre}}
                         </option>
                     </select>
-                    <label class="form-label mt-1">Personas</label>
-
-
+                    
                     <label class="form-label mt-1">Estado</label>
                     <select class="form-select" v-model="estado">
                         <option disabled :selected="true" value="">-- Seleccione --</option>
@@ -94,19 +92,19 @@ export default {
     },
     methods: {
         loadData: function () {
-            axios.get('http://132.145.204.101:8180/api/cities').then(result => {
+            axios.get('http://150.136.125.111:8080/api/cities').then(result => {
                 this.listData = result.data
             })
-            axios.get('http://132.145.204.101:8180/api/departments').then(result => {
+            axios.get('http://150.136.125.111:8080/api/departments').then(result => {
                 this.listDepartment = result.data
             })
-            axios.get('http://132.145.204.101:8180/api/cities').then(result => {
+            axios.get('http://150.136.125.111:8080/api/cities').then(result => {
                 this.listValidar = result.data
             })
         },
         findByid: function (id) {
             // metodo para consutlar por el ig del boton impreso en la vista
-            axios.get('http://132.145.204.101:8180/api/cities/' + id).then(result => {
+            axios.get('http://150.136.125.111:8080/api/cities/' + id).then(result => {
                 this.id = result.data.id;
                 this.codigo = result.data.codigo;
                 this.nombre = result.data.nombre;
@@ -128,7 +126,7 @@ export default {
                     confirmButtonText: 'Si, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.delete('http://132.145.204.101:8180/api/cities/' + id).then(() => {
+                        axios.delete('http://150.136.125.111:8080/api/cities/' + id).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: "'El registro se eliminó de forma correcta.'",
@@ -156,7 +154,7 @@ export default {
                 },
                 estado: parseInt(this.estado)
             };
-            axios.post('http://132.145.204.101:8180/api/cities', data).then(result => {
+            axios.post('http://150.136.125.111:8080/api/cities', data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -180,7 +178,7 @@ export default {
                 },
                 estado: parseInt(this.estado)
             };
-            axios.put('http://132.145.204.101:8180/api/cities/' + this.id, data).then(result => {
+            axios.put('http://150.136.125.111:8080/api/cities/' + this.id, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
