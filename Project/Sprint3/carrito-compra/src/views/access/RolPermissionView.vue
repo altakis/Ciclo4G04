@@ -12,9 +12,9 @@
                     <div>
                         <label class="form-label mt-1" name="selectRoleS">Rol</label>
                         <br>                        
-                        <select name="selectRoleS" v-model="selectedRol">
+                        <select name="selectRoleS" v-model="rolId">
                             <option v-for="option in listRoles" v-bind:value="option.id" v-bind:key="option.codigo">
-                                {{ option.nombre }}
+                                {{ JSON.stringify(option) }}
                             </option>
                         </select>                        
                     </div>
@@ -22,9 +22,9 @@
                     <div>
                         <label class="form-label mt-1" name="selectPermissionS">Permission</label>
                         <br>                        
-                        <select name="selectPermissionS" v-model="selectedPermission">
+                        <select name="selectPermissionS" v-model="permissionId">
                             <option v-for="option in listPermissions" v-bind:value="option.id" v-bind:key="option.codigo">
-                                {{ option.nombre }}
+                                {{ JSON.stringify(option) }}
                             </option>
                         </select>                        
                     </div>
@@ -34,8 +34,7 @@
                 <div>
                     <br>
                     <button type="button" class="btn btn-outline-success" @click="dataAdd()">Agregar</button>
-                    &nbsp;
-                    <button type="button" class="btn btn-outline-warning" @click="dataUpdate()">Modificar</button>
+                    &nbsp;                    
                 </div>
             </fieldset>
         </form>
@@ -46,17 +45,17 @@
             <table class="table table-hover">
                 <thead>
                     <tr class="table-active">
+                        <td>Id</td>
                         <td>Rol</td>
                         <td>Permiso</td>                        
-                        <td>Editar</td>
                         <td>Eliminar</td>
                     </tr>
                 </thead>
                 <tbody id="dataResult">
                     <tr v-for="item in listData" :key="item.id">
-                        <td>{{ item.rol_id }}</td>
-                        <td>{{ item.permiso_id }}</td>                        
-                        <td><button @click="findByid(item.id)">➤</button></td>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.rolId }}</td>
+                        <td>{{ item.permissionId }}</td>                        
                         <td><button @click="deleteById(item.id)">➤</button></td>
                     </tr>
                 </tbody>
@@ -76,14 +75,12 @@ export default {
     data() {
         return {
             id: 0,
-            rol_id: '',
-            permiso_id: '',            
+            rolId: '',
+            permissionId: '',            
             listData: [],
             listRoles:[],
             listPermissions:[],
-            listValidar: [],
-            selectedRol: null,
-            selectedPermission: null
+            listValidar: []            
         }
     },
     created() {
@@ -93,13 +90,15 @@ export default {
         loadData: function () {
             axios.get(ROLES_PERMISSIONS_ENDPOINT).then(result => {
                 this.listData = result.data
-                console.log(this.listData)
+                // console.log(this.listData)          
             })
             axios.get(ROLES_ENDPOINT).then(result => {
                 this.listRoles = result.data
+                // console.log(this.listRoles)
             })
             axios.get(PERMISSIONS_ENDPOINT).then(result => {
                 this.listPermissions = result.data
+                // console.log(this.listPermissions)
             })
             axios.get(ROLES_PERMISSIONS_ENDPOINT).then(result => {
                 this.listValidar = result.data
@@ -109,8 +108,8 @@ export default {
             // metodo para consutlar por el ig del boton impreso en la vista
             axios.get(ROLES_PERMISSIONS_ENDPOINT + '/' + id).then(result => {
                 this.id = result.data.id;
-                this.rol_id = result.data.rol_id;
-                this.permiso_id = result.data.permiso_id;                
+                this.rolId = result.data.rolId;
+                this.permissionId = result.data.permissionId;                
             })
         },
         deleteById: function (id) {
@@ -149,12 +148,13 @@ export default {
         dataAdd: function () {
             let data = {                                
                 rolId:{
-                    id: this.selectedRol,                    
+                    id: this.rolId,                    
                 },
                 permissionId:{
-                    id: this.selectedPermission                    
+                    id: this.permissionId                    
                 }
             };
+            console.log(data);
             axios.post(ROLES_PERMISSIONS_ENDPOINT, data).then(result => {
                 if (result.data) {
                     Swal.fire({
@@ -168,27 +168,7 @@ export default {
                 }
             });
 
-        },
-        dataUpdate: function () {
-            let data = {
-                id: this.id,
-                rol_id: this.selectedRol,
-                permiso_id: this.selectedPermission               
-            };
-            axios.put(ROLES_PERMISSIONS_ENDPOINT + '/' + this.id, data).then(result => {
-                if (result.data) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: "'El registro se guardó de forma correcta.'",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    this.loadData();
-                    this.clearList();
-                }
-            });
-
-        },
+        },        
         validarReferencia: function (id) {
             var bandera = true;
 
@@ -196,15 +176,15 @@ export default {
                 if (item.rolId == id) {
                     bandera = false
                 }
-                console.log(index)
+                // console.log(index)
             })
             return bandera;
 
         },
         clearList: function () {
             this.id = 0,
-                this.rol_id = '',
-                this.permiso_id = '',                
+                this.rolId = '',
+                this.permissionId = '',                
                 this.listData = []
         }
     }

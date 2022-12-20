@@ -1,4 +1,5 @@
 const BASE_URL = '152.67.233.141';
+// const BASE_URL = '127.0.0.1'; //Testing on localhost
 const BASE_PORT = 8180;
 
 const BASE_ENDPOINT = `http://${BASE_URL}:${BASE_PORT}/api`;
