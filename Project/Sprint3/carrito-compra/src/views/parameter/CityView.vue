@@ -71,7 +71,8 @@
 
 <script>
 import axios from 'axios';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import {CITIES_ENDPOINT, DEPARTMENTS_ENDPOINT} from '../../endpoint_config.js';
 
 export default {
     name: 'DepartmentView',
@@ -92,19 +93,19 @@ export default {
     },
     methods: {
         loadData: function () {
-            axios.get('http://150.136.125.111:8080/api/cities').then(result => {
+            axios.get(CITIES_ENDPOINT).then(result => {
                 this.listData = result.data
             })
-            axios.get('http://150.136.125.111:8080/api/departments').then(result => {
+            axios.get(DEPARTMENTS_ENDPOINT).then(result => {
                 this.listDepartment = result.data
             })
-            axios.get('http://150.136.125.111:8080/api/cities').then(result => {
+            axios.get(CITIES_ENDPOINT).then(result => {
                 this.listValidar = result.data
             })
         },
         findByid: function (id) {
             // metodo para consutlar por el ig del boton impreso en la vista
-            axios.get('http://150.136.125.111:8080/api/cities/' + id).then(result => {
+            axios.get(CITIES_ENDPOINT + '/' + id).then(result => {
                 this.id = result.data.id;
                 this.codigo = result.data.codigo;
                 this.nombre = result.data.nombre;
@@ -126,7 +127,7 @@ export default {
                     confirmButtonText: 'Si, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.delete('http://150.136.125.111:8080/api/cities/' + id).then(() => {
+                        axios.delete(CITIES_ENDPOINT + '/' + id).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: "'El registro se eliminó de forma correcta.'",
@@ -154,7 +155,7 @@ export default {
                 },
                 estado: parseInt(this.estado)
             };
-            axios.post('http://150.136.125.111:8080/api/cities', data).then(result => {
+            axios.post(CITIES_ENDPOINT, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -178,7 +179,7 @@ export default {
                 },
                 estado: parseInt(this.estado)
             };
-            axios.put('http://150.136.125.111:8080/api/cities/' + this.id, data).then(result => {
+            axios.put(CITIES_ENDPOINT + '/' + this.id, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',

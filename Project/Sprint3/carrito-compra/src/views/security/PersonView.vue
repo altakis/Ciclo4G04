@@ -125,7 +125,8 @@
 
 <script>
 import axios from 'axios';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import {PERSONS_ENDPOINT, USERS_ENDPOINT, CITIES_ENDPOINT} from '../../endpoint_config.js';
 export default {
     name: 'PersonView',
     data() {
@@ -144,19 +145,19 @@ export default {
     },
     methods: {
         loadData: function () {
-            axios.get('http://150.136.125.111:8080/api/persons').then(result => {
+            axios.get(PERSONS_ENDPOINT).then(result => {
                 this.listData = result.data
             })
-            axios.get('http://150.136.125.111:8080/api/users').then(result => {
+            axios.get(USERS_ENDPOINT).then(result => {
                 this.listUsuario = result.data
             })
-            axios.get('http://150.136.125.111:8080/api/cities').then(result => {
+            axios.get(CITIES_ENDPOINT).then(result => {
                 this.listCiudad = result.data
             })
         },
         findById: function (id) {
             // metodo para consutlar por el ig del boton impreso en la vista
-            axios.get('http://150.136.125.111:8080/api/persons/' + id).then(result => {
+            axios.get(PERSONS_ENDPOINT + '/' + id).then(result => {
                 this.id = result.data.id;
                 this.tipoDocumento = result.data.tipoDocumento;
                 this.documento = result.data.documento;
@@ -187,7 +188,7 @@ export default {
                     confirmButtonText: 'Si, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.delete('http://150.136.125.111:8080/api/persons/' + id).then(() => {
+                        axios.delete(PERSONS_ENDPOINT + '/' + id).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: "'El registro se eliminó de forma correcta.'",
@@ -226,7 +227,7 @@ export default {
                 },
                 estado: parseInt(this.estado)
             };
-            axios.post('http://150.136.125.111:8080/api/persons', data).then(result => {
+            axios.post(PERSONS_ENDPOINT, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -261,7 +262,7 @@ export default {
                 },
                 estado: parseInt(this.estado)
             };
-            axios.put('http://150.136.125.111:8080/api/persons/' + this.id, data).then(result => {
+            axios.put(PERSONS_ENDPOINT + '/' + this.id, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',

@@ -62,7 +62,8 @@
 
 <script>
 import axios from 'axios';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import {PERSONS_ENDPOINT, USERS_ENDPOINT} from '../../endpoint_config.js';
 export default {
     name: 'PersonView',
     data() {
@@ -79,16 +80,16 @@ export default {
     },
     methods: {
         loadData: function () {
-            axios.get('http://150.136.125.111:8080/api/users').then(result => {
+            axios.get(USERS_ENDPOINT).then(result => {
                 this.listData = result.data
             })
-            axios.get('http://150.136.125.111:8080/api/persons').then(result => {
+            axios.get(PERSONS_ENDPOINT).then(result => {
                 this.listValidar = result.data
             })
         },
         findById: function (id) {
             // metodo para consutlar por el ig del boton impreso en la vista
-            axios.get('http://150.136.125.111:8080/api/users/' + id).then(result => {
+            axios.get(USERS_ENDPOINT + '/' + id).then(result => {
                 this.id = result.data.id;                
                 this.usuario = result.data.usuario;
                 // this.contrasenia = result.data.contrasenia;
@@ -109,7 +110,7 @@ export default {
                     confirmButtonText: 'Si, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.delete('http://150.136.125.111:8080/api/users/' + id).then(() => {
+                        axios.delete(USERS_ENDPOINT + '/' + id).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: "'El registro se eliminó de forma correcta.'",
@@ -134,7 +135,7 @@ export default {
                 contrasenia: this.contrasenia,                
                 estado: parseInt(this.estado)
             };
-            axios.post('http://150.136.125.111:8080/api/users', data).then(result => {
+            axios.post(USERS_ENDPOINT, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -155,7 +156,7 @@ export default {
                 contrasenia: this.contrasenia,                
                 estado: parseInt(this.estado)
             };
-            axios.put('http://150.136.125.111:8080/api/users/' + this.id, data).then(result => {
+            axios.put(USERS_ENDPOINT + '/' + this.id, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
