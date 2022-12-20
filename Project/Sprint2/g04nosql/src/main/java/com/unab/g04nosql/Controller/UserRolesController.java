@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04nosql.Collection.UserRoles;
 import com.unab.g04nosql.Collection.Users;
+import com.unab.g04nosql.Collection.Roles;
+import com.unab.g04nosql.Collection.UserRoles;
 import java.util.List;
 import java.util.Optional;
 import com.unab.g04nosql.IService.IRolesService;
@@ -53,19 +54,20 @@ public class UserRolesController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public UserRoles save(@RequestBody UserRoles newUserRolId) {
-        Optional<UserRoles> newUserRol = service.findById(newUserRolId.getId());
-        if (newUserRol.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        Optional<Users> userTest = userService.findById(newUserRolId.getUserId().getId());
+        Optional<Roles> rolTest = roleService.findById(newUserRolId.getRolId().getId());
+        if (rolTest.isEmpty() || userTest.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
             return service.save(newUserRolId);
         }
     }
 
-    @DeleteMapping("{userRoleId}")
+    @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("userId") String userRoleId) {
+    public void delete(@PathVariable("id") String userRoleId) {
         Optional<UserRoles> userRoleToDelete = service.findById(userRoleId);
-        if (!userRoleToDelete.isEmpty()) {
+        if (userRoleToDelete.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             service.delete(userRoleId);

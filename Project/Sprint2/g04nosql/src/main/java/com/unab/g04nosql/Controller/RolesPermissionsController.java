@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unab.g04nosql.Collection.Roles;
+import com.unab.g04nosql.Collection.Permissions;
 import com.unab.g04nosql.Collection.RolesPermissions;
-import com.unab.g04nosql.IService.IRolesPermissionsService;
 import com.unab.g04nosql.IService.IRolesService;
+import com.unab.g04nosql.IService.IPermissionsService;
+import com.unab.g04nosql.IService.IRolesPermissionsService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.web.server.ResponseStatusException;
@@ -30,6 +32,9 @@ public class RolesPermissionsController {
 
     @Autowired
     private IRolesService roleService;
+    
+    @Autowired
+    private IPermissionsService permissionService;
 
     @GetMapping
     public List<RolesPermissions> all() {
@@ -37,7 +42,7 @@ public class RolesPermissionsController {
     }
 
     @GetMapping("{rolId}")
-    public List<RolesPermissions> show(@PathVariable("rolId") String rolId) {
+    public List<RolesPermissions> show(@PathVariable String rolId) {
         Optional<Roles> rolIdToFind = roleService.findById(rolId);
         if (rolIdToFind.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -48,10 +53,11 @@ public class RolesPermissionsController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public RolesPermissions save(@RequestBody RolesPermissions newRolPermissionId) {
-        Optional<RolesPermissions> newRolPermission = service.findById(newRolPermissionId.getId());
-        if (newRolPermission.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    public RolesPermissions save(@RequestBody RolesPermissions newRolPermissionId) {        
+        Optional<Roles> rolTest = roleService.findById(newRolPermissionId.getRolId().getId());
+        Optional<Permissions> permissionTest = permissionService.findById(newRolPermissionId.getPermissionId().getId());
+        if (rolTest.isEmpty() || permissionTest.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
             return service.save(newRolPermissionId);
         }
@@ -59,9 +65,9 @@ public class RolesPermissionsController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") String rolPermissionId) {
-        Optional<RolesPermissions> rolPermissionToDelete = service.findById(rolPermissionId);
-        if (!rolPermissionToDelete.isEmpty()) {
+    public void delete(@PathVariable("id") String rolPermissionId) {        
+        Optional<RolesPermissions> rolPermissionToDelete = service.findById(rolPermissionId);        
+        if (rolPermissionToDelete.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             service.delete(rolPermissionId);
