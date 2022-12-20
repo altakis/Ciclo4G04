@@ -56,22 +56,22 @@ const routes = [
     component: () => import('../views/access/RolPermissionView.vue')
   },
   {
-    path: '/inventory-marca',
+    path: '/inventario-marca',
     name: 'registro-marcas',
     component: () => import('../views/inventory/BrandView.vue')
   },
   {
-    path: '/inventory-categoria',
+    path: '/inventario-categoria',
     name: 'registro-categorias',
     component: () => import('../views/inventory/CategoryView.vue')
   },
   {
-    path: '/inventory-units',
+    path: '/inventario-unidades',
     name: 'registro-unidades',
     component: () => import('../views/inventory/MeasuredUnitView.vue')
   },
   {
-    path: '/inventory-products',
+    path: '/inventario-productos',
     name: 'registro-productos',
     component: () => import('../views/inventory/ProductView.vue')
   }

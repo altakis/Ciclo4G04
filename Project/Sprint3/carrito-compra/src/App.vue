@@ -44,6 +44,19 @@
                 <router-link class="dropdown-item" to="/acceso-rolPermiso">Registro Rol-Permisos</router-link>
               </div>
             </li>
+
+            <!-- <div class="dropdown-divider"></div> -->
+            <!-- Inventario -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Inventory</a>
+              <div class="dropdown-menu">
+                <router-link class="dropdown-item" to="/inventario-marca">Registro Marcas</router-link>
+                <router-link class="dropdown-item" to="/inventario-categoria">Registro Categorias</router-link>
+                <router-link class="dropdown-item" to="/inventario-unidades">Registro Unidades</router-link>
+                <router-link class="dropdown-item" to="/inventario-productos">Registro de Productos</router-link>
+              </div>
+            </li>
           </ul>
           <form class="d-flex">
             <input class="form-control me-sm-2" type="search" placeholder="Search">
