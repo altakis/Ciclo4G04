@@ -13,4 +13,4 @@ export const DEPARTMENTS_ENDPOINT = BASE_ENDPOINT + '/departments';
 export const PERSONS_ENDPOINT = BASE_ENDPOINT + '/persons';
 export const PERMISSIONS_ENDPOINT = BASE_ENDPOINT + '/permissions';
 export const USER_ROLES_ENDPOINT = BASE_ENDPOINT + '/userRoles';
-export const ROLES_PERMISSIONS_ENDPOINT = BASE_ENDPOINT + '/cities';
+export const ROLES_PERMISSIONS_ENDPOINT = BASE_ENDPOINT + '/rolesPermissions';
