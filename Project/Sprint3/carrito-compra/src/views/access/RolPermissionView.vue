@@ -147,9 +147,13 @@ export default {
             }
         },
         dataAdd: function () {
-            let data = {
-                rol_id: this.rol_id,
-                permiso_id: this.permiso_id                
+            let data = {                                
+                rolId:{
+                    id: this.selectedRol,                    
+                },
+                permissionId:{
+                    id: this.selectedPermission                    
+                }
             };
             axios.post(ROLES_PERMISSIONS_ENDPOINT, data).then(result => {
                 if (result.data) {
@@ -168,8 +172,8 @@ export default {
         dataUpdate: function () {
             let data = {
                 id: this.id,
-                rol_id: this.rol_id,
-                permiso_id: this.permiso_id                
+                rol_id: this.selectedRol,
+                permiso_id: this.selectedPermission               
             };
             axios.put(ROLES_PERMISSIONS_ENDPOINT + '/' + this.id, data).then(result => {
                 if (result.data) {
