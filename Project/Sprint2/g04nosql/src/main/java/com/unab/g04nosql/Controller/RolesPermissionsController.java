@@ -50,7 +50,7 @@ public class RolesPermissionsController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public RolesPermissions save(@RequestBody RolesPermissions newRolPermissionId) {
         Optional<RolesPermissions> newRolPermission = service.findById(newRolPermissionId.getId());
-        if (!newRolPermission.isEmpty()) {
+        if (newRolPermission.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             return service.save(newRolPermissionId);

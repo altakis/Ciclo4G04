@@ -54,7 +54,7 @@ public class UserRolesController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public UserRoles save(@RequestBody UserRoles newUserRolId) {
         Optional<UserRoles> newUserRol = service.findById(newUserRolId.getId());
-        if (!newUserRol.isEmpty()) {
+        if (newUserRol.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             return service.save(newUserRolId);
