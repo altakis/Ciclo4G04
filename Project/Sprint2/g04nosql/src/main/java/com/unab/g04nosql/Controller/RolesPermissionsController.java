@@ -53,7 +53,7 @@ public class RolesPermissionsController {
         if (!newRolPermission.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
-            return service.save(newRolPermission.get());
+            return service.save(newRolPermissionId);
         }
     }
 

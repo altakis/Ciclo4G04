@@ -57,7 +57,7 @@ public class UserRolesController {
         if (!newUserRol.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
-            return service.save(newUserRol.get());
+            return service.save(newUserRolId);
         }
     }
 
