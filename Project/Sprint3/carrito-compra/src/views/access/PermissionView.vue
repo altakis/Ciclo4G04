@@ -1,10 +1,9 @@
-<template>
-    <div>Test # 2</div>
+<template>    
     <div class="container">
-        <form id="department">
+        <form id="rol">
             <fieldset>
                 <div class="alert alert-dismissible alert-warning">
-                    <p class="mb-0">Registro de Departamentos</p>
+                    <p class="mb-0">Registro de Permisos</p>
                 </div>
                 <!-- Datos de entrada del formulario -->
                 <div class="form-group">
@@ -15,7 +14,10 @@
 
                     <label class="form-label mt-1">Nombre</label>
                     <input type="text" class="form-control" v-model="nombre" placeholder="Ingresar nombre">
-
+                    
+                    <label class="form-label mt-1">Ruta</label>
+                    <input type="text" class="form-control" v-model="ruta" placeholder="Ingresar ruta">
+                    
                     <label class="form-label mt-1">Estado</label>
                     <select class="form-select" v-model="estado">
                         <option disabled :selected="true" value="">-- Seleccione --</option>
@@ -41,7 +43,8 @@
                 <thead>
                     <tr class="table-active">
                         <td>Codigo</td>
-                        <td>Nombre</td>
+                        <td>Permiso</td>                        
+                        <td>Ruta</td>
                         <td>Estado</td>
                         <td>Editar</td>
                         <td>Eliminar</td>
@@ -50,7 +53,8 @@
                 <tbody id="dataResult">
                     <tr v-for="item in listData" :key="item.id">
                         <td>{{ item.codigo }}</td>
-                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.nombre }}</td>                        
+                        <td>{{ item.ruta }}</td> 
                         <td>{{ item.estado == true ? 'Activo' : 'Inactivo' }}</td>
                         <td><button @click="findByid(item.id)">➤</button></td>
                         <td><button @click="deleteById(item.id)">➤</button></td>
@@ -63,19 +67,21 @@
 
 <script>
 import axios from 'axios';
-import Swal from 'sweetalert2'
-import {CITIES_ENDPOINT, DEPARTMENTS_ENDPOINT} from '../../endpoint_config.js';
+import Swal from 'sweetalert2';
+import {PERMISSIONS_ENDPOINT, ROLES_PERMISSIONS_ENDPOINT} from '../../endpoint_config.js';
 
 export default {
-    name: 'DepartmentView',
+    name: 'PermissionView',
 
     data() {
         return {
             id: 0,
             codigo: '',
             nombre: '',
+            ruta: '',
             estado: '',
-            listData: [],
+            listData: [],            
+            listRolPermissions:[],
             listValidar: []
         }
     },
@@ -84,19 +90,23 @@ export default {
     },
     methods: {
         loadData: function () {
-            axios.get(DEPARTMENTS_ENDPOINT).then(result => {
+            axios.get(PERMISSIONS_ENDPOINT).then(result => {
                 this.listData = result.data
             })
-            axios.get(CITIES_ENDPOINT).then(result => {
+            axios.get(ROLES_PERMISSIONS_ENDPOINT).then(result => {
+                this.listRolPermissions = result.data
+            })            
+            axios.get(PERMISSIONS_ENDPOINT).then(result => {
                 this.listValidar = result.data
             })
         },
         findByid: function (id) {
             // metodo para consutlar por el ig del boton impreso en la vista
-            axios.get(DEPARTMENTS_ENDPOINT + '/' + id).then(result => {
+            axios.get(PERMISSIONS_ENDPOINT + '/' + id).then(result => {
                 this.id = result.data.id;
                 this.codigo = result.data.codigo;
-                this.nombre = result.data.nombre;
+                this.nombre = result.data.nombre;              
+                this.ruta = result.data.ruta;
                 this.estado = (result.data.estado == true ? 1 : 0);
             })
         },
@@ -114,7 +124,7 @@ export default {
                     confirmButtonText: 'Si, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.delete(DEPARTMENTS_ENDPOINT + '/' + id).then(() => {
+                        axios.delete(PERMISSIONS_ENDPOINT + '/' + id).then(() => {
                             Swal.fire({
                                 icon: 'success',
                                 title: "'El registro se eliminó de forma correcta.'",
@@ -136,10 +146,11 @@ export default {
         dataAdd: function () {
             let data = {
                 codigo: this.codigo,
-                nombre: this.nombre,
+                nombre: this.nombre,                
+                ruta: this.ruta,
                 estado: parseInt(this.estado)
             };
-            axios.post(DEPARTMENTS_ENDPOINT, data).then(result => {
+            axios.post(PERMISSIONS_ENDPOINT, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -157,10 +168,11 @@ export default {
             let data = {
                 id: this.id,
                 codigo: this.codigo,
-                nombre: this.nombre,
+                nombre: this.nombre, 
+                ruta: this.ruta,               
                 estado: parseInt(this.estado)
             };
-            axios.put(DEPARTMENTS_ENDPOINT + '/' + this.id, data).then(result => {
+            axios.put(PERMISSIONS_ENDPOINT + '/' + this.id, data).then(result => {
                 if (result.data) {
                     Swal.fire({
                         icon: 'success',
@@ -178,7 +190,7 @@ export default {
             var bandera = true;
 
             this.listValidar.forEach((item, index) => {
-                if (item.departmentId.id == id) {
+                if (item.rolId == id) {
                     bandera = false
                 }
                 console.log(index)
@@ -190,6 +202,7 @@ export default {
             this.id = 0,
                 this.codigo = '',
                 this.nombre = '',
+                this.ruta = '',
                 this.estado = '',
                 this.listData = []
         }

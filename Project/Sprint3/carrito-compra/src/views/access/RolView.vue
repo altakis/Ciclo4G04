@@ -5,7 +5,7 @@
                 <div class="alert alert-dismissible alert-warning">
                     <p class="mb-0">Registro de Roles</p>
                 </div>
-                <!-- Datos de entarada del formulario -->
+                <!-- Datos de entrada del formulario -->
                 <div class="form-group">
                     <input type="hidden" v-model="id">
 
