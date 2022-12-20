@@ -54,6 +54,26 @@ const routes = [
     path: '/acceso-rolPermiso',
     name: 'registro-rolPermiso',
     component: () => import('../views/access/RolPermissionView.vue')
+  },
+  {
+    path: '/inventory-marca',
+    name: 'registro-marcas',
+    component: () => import('../views/inventory/BrandView.vue')
+  },
+  {
+    path: '/inventory-categoria',
+    name: 'registro-categorias',
+    component: () => import('../views/inventory/CategoryView.vue')
+  },
+  {
+    path: '/inventory-units',
+    name: 'registro-unidades',
+    component: () => import('../views/inventory/MeasuredUnitView.vue')
+  },
+  {
+    path: '/inventory-products',
+    name: 'registro-productos',
+    component: () => import('../views/inventory/ProductView.vue')
   }
 
 ]
