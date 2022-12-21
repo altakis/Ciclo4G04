@@ -176,7 +176,7 @@ export default {
                 if (item.rolId == id) {
                     bandera = false
                 }
-                // console.log(index)
+                console.log(index)
             })
             return bandera;
 
